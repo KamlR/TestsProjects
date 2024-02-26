@@ -1,0 +1,462 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > VendingMachine</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">root.vending</a>
+</div>
+
+<h1>Coverage Summary for Class: VendingMachine (root.vending)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">VendingMachine</td>
+<td class="coverageStat">
+  <span class="percent">
+    95,2%
+  </span>
+  <span class="absValue">
+    (20/21)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    92,4%
+  </span>
+  <span class="absValue">
+    (121/131)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">VendingMachine$Mode</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">VendingMachine$Response</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (8/8)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    95,8%
+  </span>
+  <span class="absValue">
+    (23/24)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    92,9%
+  </span>
+  <span class="absValue">
+    (130/140)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;/**
+&nbsp; * Copyright (c) 2009 ISP RAS.
+&nbsp; * 109004, A. Solzhenitsina, 25, Moscow, Russia.
+&nbsp; * All rights reserved.
+&nbsp; *
+&nbsp; * $Id$
+&nbsp; * Created on Jan 13, 2016
+&nbsp; *
+&nbsp; */
+&nbsp;
+&nbsp;package root.vending;
+&nbsp;
+&nbsp;/**
+&nbsp; * @author Victor Kuliamin
+&nbsp; *
+&nbsp; */
+<b class="fc">&nbsp;public class VendingMachine</b>
+&nbsp;{
+<b class="fc">&nbsp;  private long id = 117345294655382L;</b>
+&nbsp;  
+<b class="fc">&nbsp;  public enum Mode {OPERATION, ADMINISTERING};</b>
+<b class="fc">&nbsp;  private Mode mode = Mode.OPERATION;</b>
+&nbsp;  
+<b class="fc">&nbsp;  public enum Response {  OK</b>
+<b class="fc">&nbsp;                        , ILLEGAL_OPERATION</b>
+<b class="fc">&nbsp;                        , INVALID_PARAM</b>
+<b class="fc">&nbsp;                        , CANNOT_PERFORM</b>
+<b class="fc">&nbsp;                        , TOO_BIG_CHANGE</b>
+<b class="fc">&nbsp;                        , UNSUITABLE_CHANGE</b>
+<b class="fc">&nbsp;                        , INSUFFICIENT_PRODUCT</b>
+<b class="fc">&nbsp;                        , INSUFFICIENT_MONEY</b>
+&nbsp;                        };
+&nbsp;  
+<b class="fc">&nbsp;  private int max1 = 30;</b>
+<b class="fc">&nbsp;  private int max2 = 40;</b>
+&nbsp;  
+<b class="fc">&nbsp;  private int num1 = 0;</b>
+<b class="fc">&nbsp;  private int num2 = 0;</b>
+&nbsp;  
+<b class="fc">&nbsp;  private int price1 = 8;</b>
+<b class="fc">&nbsp;  private int price2 = 5;</b>
+&nbsp;  
+<b class="fc">&nbsp;  private int maxc1  = 50;</b>
+<b class="fc">&nbsp;  private int maxc2  = 50;</b>
+&nbsp;  
+<b class="fc">&nbsp;  private int coins1  = 0;</b>
+<b class="fc">&nbsp;  private int coins2  = 0;</b>
+&nbsp;  
+<b class="fc">&nbsp;  public static int coinval1 = 1;</b>
+<b class="fc">&nbsp;  public static int coinval2 = 2;</b>
+&nbsp;  
+<b class="fc">&nbsp;  private int balance = 0;</b>
+&nbsp;  
+&nbsp;  public int getNumberOfProduct1()
+&nbsp;  {
+<b class="fc">&nbsp;    return num1;</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  public int getNumberOfProduct2()
+&nbsp;  {
+<b class="fc">&nbsp;    return num2;</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  public int getCurrentBalance()
+&nbsp;  {
+<b class="fc">&nbsp;    return balance;</b>
+&nbsp;  }
+&nbsp;  
+&nbsp;  public Mode getCurrentMode()
+&nbsp;  {
+<b class="nc">&nbsp;    return mode;</b>
+&nbsp;  }
+&nbsp;  
+&nbsp;  public int getCurrentSum()
+&nbsp;  {
+<b class="fc">&nbsp;    if(mode == Mode.OPERATION)</b>
+<b class="fc">&nbsp;      return 0;</b>
+&nbsp;    else
+<b class="fc">&nbsp;      return coins1*coinval1+coins2*coinval2;</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  public int getCoins1()
+&nbsp;  {
+<b class="fc">&nbsp;    if(mode == Mode.OPERATION)</b>
+<b class="fc">&nbsp;      return 0;</b>
+&nbsp;    else
+<b class="fc">&nbsp;      return coins1;</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  public int getCoins2()
+&nbsp;  {
+<b class="fc">&nbsp;    if(mode == Mode.OPERATION)</b>
+<b class="fc">&nbsp;      return 0;</b>
+&nbsp;    else
+<b class="fc">&nbsp;      return coins2;</b>
+&nbsp;  }
+&nbsp;  
+&nbsp;  public int getPrice1()
+&nbsp;  {
+<b class="fc">&nbsp;    return price1;</b>
+&nbsp;  }
+&nbsp;  
+&nbsp;  public int getPrice2()
+&nbsp;  {
+<b class="fc">&nbsp;    return price2;</b>
+&nbsp;  }
+&nbsp;  
+&nbsp;  public Response fillProducts()
+&nbsp;  {
+<b class="fc">&nbsp;    if(mode == Mode.OPERATION) return Response.ILLEGAL_OPERATION;</b>
+<b class="fc">&nbsp;    num1 = max1;</b>
+<b class="fc">&nbsp;    num2 = max2;</b>
+<b class="fc">&nbsp;    return Response.OK;</b>
+&nbsp;  }
+&nbsp;    
+&nbsp;  public Response fillCoins(int c1, int c2)
+&nbsp;  {
+<b class="fc">&nbsp;    if(mode == Mode.OPERATION) return Response.ILLEGAL_OPERATION;</b>
+<b class="fc">&nbsp;    if(c1 &lt;= 0 || c1 &gt; maxc1) return Response.INVALID_PARAM;</b>
+<b class="fc">&nbsp;    if(c2 &lt;= 0 || c2 &gt; maxc2) return Response.INVALID_PARAM;</b>
+<b class="fc">&nbsp;    coins1 = c1;</b>
+<b class="fc">&nbsp;    coins2 = c2;</b>
+<b class="fc">&nbsp;    return Response.OK;</b>
+&nbsp;  }
+&nbsp;  
+&nbsp;  public Response enterAdminMode(long code)
+&nbsp;  {
+<b class="fc">&nbsp;    if(code != id) return Response.INVALID_PARAM;</b>
+<b class="fc">&nbsp;    if(balance != 0) return Response.CANNOT_PERFORM;</b>
+&nbsp;    
+<b class="fc">&nbsp;    mode = Mode.ADMINISTERING;</b>
+<b class="fc">&nbsp;    return Response.OK;</b>
+&nbsp;  }
+&nbsp;  
+&nbsp;  public void exitAdminMode()
+&nbsp;  {
+<b class="fc">&nbsp;    mode = Mode.OPERATION;</b>
+&nbsp;  }
+&nbsp;  
+&nbsp;  public Response setPrices(int p1, int p2)
+&nbsp;  {
+<b class="fc">&nbsp;    if(mode == Mode.OPERATION) return Response.ILLEGAL_OPERATION;</b>
+<b class="fc">&nbsp;    if(p1 &lt;= 0 || p2 &lt;= 0) return Response.INVALID_PARAM;</b>
+<b class="fc">&nbsp;    price1 = p1;</b>
+<b class="fc">&nbsp;    price2 = p2;</b>
+<b class="fc">&nbsp;    return Response.OK;</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  public Response putCoin1()
+&nbsp;  {
+<b class="fc">&nbsp;    if(mode == Mode.ADMINISTERING) return Response.ILLEGAL_OPERATION;</b>
+<b class="fc">&nbsp;    if(coins1 == maxc1)            return Response.CANNOT_PERFORM;</b>
+&nbsp;    
+<b class="fc">&nbsp;    balance += coinval1;</b>
+<b class="fc">&nbsp;    coins1++;</b>
+&nbsp;    
+<b class="fc">&nbsp;    return Response.OK;</b>
+&nbsp;  }
+&nbsp;  
+&nbsp;  public Response putCoin2()
+&nbsp;  {
+<b class="fc">&nbsp;    if(mode == Mode.ADMINISTERING) return Response.ILLEGAL_OPERATION;</b>
+<b class="fc">&nbsp;    if(coins2 == maxc2)            return Response.CANNOT_PERFORM;</b>
+&nbsp;    
+<b class="fc">&nbsp;    balance += coinval2;</b>
+<b class="fc">&nbsp;    coins2++;</b>
+&nbsp;    
+<b class="fc">&nbsp;    return Response.OK;</b>
+&nbsp;  }
+&nbsp;  
+&nbsp;  public Response returnMoney()
+&nbsp;  {
+<b class="fc">&nbsp;    if(mode == Mode.ADMINISTERING) return Response.ILLEGAL_OPERATION;</b>
+&nbsp;    
+<b class="fc">&nbsp;    if(balance == 0)</b>
+&nbsp;    {
+<b class="fc">&nbsp;      return Response.OK;</b>
+&nbsp;    }
+<b class="fc">&nbsp;    else if(balance &gt; coins1*coinval1 + coins2*coinval2)</b>
+&nbsp;    {
+<b class="nc">&nbsp;      return Response.TOO_BIG_CHANGE;</b>
+&nbsp;    }
+<b class="fc">&nbsp;    else if(balance &gt; coins2*coinval2) // 4 first  12 second  8</b>
+&nbsp;    {
+&nbsp;      // using coinval1 == 1
+<b class="fc">&nbsp;      coins1 -= (balance-coins2*coinval2);</b>
+<b class="fc">&nbsp;      coins2 = 0;</b>
+<b class="fc">&nbsp;      balance = 0;</b>
+&nbsp;      
+<b class="fc">&nbsp;      return Response.OK; </b>
+&nbsp;    }
+<b class="fc">&nbsp;    else if(balance%coinval2 == 0)</b>
+&nbsp;    {
+<b class="nc">&nbsp;      coins2 -= (balance/coinval2);</b>
+<b class="nc">&nbsp;      balance = 0;</b>
+&nbsp;      
+<b class="nc">&nbsp;      return Response.OK;</b>
+&nbsp;    }
+<b class="fc">&nbsp;    else if(coins1 == 0)</b>
+&nbsp;    {  
+&nbsp;      // using coinval1 == 1
+<b class="nc">&nbsp;      return Response.UNSUITABLE_CHANGE;</b>
+&nbsp;    }
+&nbsp;    else
+&nbsp;    {
+&nbsp;      // using coinval1 == 1
+<b class="fc">&nbsp;      coins2 -= (balance/coinval2);</b>
+<b class="fc">&nbsp;      coins1--;</b>
+<b class="fc">&nbsp;      balance = 0;</b>
+&nbsp;      
+<b class="fc">&nbsp;      return Response.OK;</b>
+&nbsp;    }
+&nbsp;  }
+&nbsp;  
+&nbsp;  public Response giveProduct1(int number)
+&nbsp;  {
+<b class="fc">&nbsp;    if(mode == Mode.ADMINISTERING) return Response.ILLEGAL_OPERATION;</b>
+&nbsp;    
+<b class="fc">&nbsp;    if(number &lt;= 0 || number &gt; max1) return Response.INVALID_PARAM;</b>
+<b class="fc">&nbsp;    if(number &gt; num1) return Response.INSUFFICIENT_PRODUCT;</b>
+&nbsp;    
+<b class="fc">&nbsp;    int res = balance - number*price1;</b>
+&nbsp;    
+<b class="fc">&nbsp;    if(res &lt; 0) return Response.INSUFFICIENT_MONEY;</b>
+<b class="fc">&nbsp;    else if(res &gt; coins1*coinval1 + coins2*coinval2)</b>
+&nbsp;    {
+<b class="nc">&nbsp;      return Response.TOO_BIG_CHANGE;</b>
+&nbsp;    }
+<b class="fc">&nbsp;    else if(res &gt; coins2*coinval2)</b>
+&nbsp;    {
+&nbsp;      // using coinval1 == 1
+<b class="fc">&nbsp;      coins1 -= (res-coins2*coinval2);</b>
+<b class="fc">&nbsp;      coins2 = 0;</b>
+<b class="fc">&nbsp;      balance = 0;</b>
+<b class="fc">&nbsp;      num1 -= number;</b>
+&nbsp;      
+<b class="fc">&nbsp;      return Response.OK; </b>
+&nbsp;    }
+<b class="fc">&nbsp;    else if(res%coinval2 == 0)</b>
+&nbsp;    {
+<b class="fc">&nbsp;      coins2 -= (res/coinval2);</b>
+<b class="fc">&nbsp;      balance = 0;</b>
+<b class="fc">&nbsp;      num1 -= number;</b>
+&nbsp;      
+<b class="fc">&nbsp;      return Response.OK;</b>
+&nbsp;    }
+<b class="fc">&nbsp;    else if(coins1 == 0)</b>
+&nbsp;    {  
+&nbsp;      // using coinval1 == 1
+<b class="nc">&nbsp;      return Response.UNSUITABLE_CHANGE;</b>
+&nbsp;    }
+&nbsp;    else
+&nbsp;    {
+&nbsp;      // using coinval1 == 1
+<b class="fc">&nbsp;      coins2 -= (res/coinval2);</b>
+<b class="fc">&nbsp;      coins1--;</b>
+<b class="fc">&nbsp;      balance = 0;</b>
+<b class="fc">&nbsp;      num1 -= number;</b>
+&nbsp;      
+<b class="fc">&nbsp;      return Response.OK;</b>
+&nbsp;    }
+&nbsp;  }
+&nbsp;  
+&nbsp;  public Response giveProduct2(int number)
+&nbsp;  {
+<b class="fc">&nbsp;    if(mode == Mode.ADMINISTERING) return Response.ILLEGAL_OPERATION;</b>
+&nbsp;    
+<b class="fc">&nbsp;    if(number &lt;= 0 || number &gt; max2) return Response.INVALID_PARAM;</b>
+<b class="fc">&nbsp;    if(number &gt; num2) return Response.INSUFFICIENT_PRODUCT;</b>
+&nbsp;    
+<b class="fc">&nbsp;    int res = balance - number*price2;</b>
+&nbsp;    
+<b class="fc">&nbsp;    if(res &lt; 0) return Response.INSUFFICIENT_MONEY;</b>
+<b class="fc">&nbsp;    else if(res &gt; coins1*coinval1 + coins2*coinval2)</b>
+&nbsp;    {
+<b class="nc">&nbsp;      return Response.INSUFFICIENT_MONEY;</b>
+&nbsp;    }
+<b class="fc">&nbsp;    else if(res &gt; coins2*coinval2)</b>
+&nbsp;    {
+&nbsp;      // using coinval1 == 1
+<b class="fc">&nbsp;      coins1 -= (res-coins2*coinval2);</b>
+<b class="fc">&nbsp;      coins2 = 0;</b>
+<b class="fc">&nbsp;      balance = 0;</b>
+<b class="fc">&nbsp;      num2 -= number;</b>
+&nbsp;      
+<b class="fc">&nbsp;      return Response.OK; </b>
+&nbsp;    }
+<b class="fc">&nbsp;    else if(res%coinval2 == 0)</b>
+&nbsp;    {
+<b class="fc">&nbsp;      coins2 -= (res/coinval2);</b>
+<b class="fc">&nbsp;      balance = 0;</b>
+<b class="fc">&nbsp;      num2 -= number;</b>
+&nbsp;      
+<b class="fc">&nbsp;      return Response.OK;</b>
+&nbsp;    }
+<b class="fc">&nbsp;    else if(coins1 == 0)</b>
+&nbsp;    {  
+&nbsp;      // using coinval1 == 1
+<b class="nc">&nbsp;      return Response.UNSUITABLE_CHANGE;</b>
+&nbsp;    }
+&nbsp;    else
+&nbsp;    {
+&nbsp;      // using coinval1 == 1
+<b class="fc">&nbsp;      coins2 -= (res/coinval2);</b>
+<b class="fc">&nbsp;      coins1--;</b>
+<b class="fc">&nbsp;      balance = 0;</b>
+<b class="fc">&nbsp;      num2 -= number;</b>
+&nbsp;      
+<b class="fc">&nbsp;      return Response.OK;</b>
+&nbsp;    }
+&nbsp;  }
+&nbsp;  
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-02-26 17:15</div>
+</div>
+</body>
+</html>
